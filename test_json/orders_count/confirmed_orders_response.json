@@ -1,0 +1,56 @@
+{
+    "data": [
+        {
+            "id": 3,
+            "order_number": "ORD-20260428-WW1Z6J",
+            "customer_name": "فاطمة علي",
+            "customer_phone": "07801234568",
+            "customer_address": "أربيل، شارع 60 متر",
+            "city": "أربيل",
+            "notes": "طلب لفاطمة - بنات فقط",
+            "status": "confirmed",
+            "subtotal": "107.97",
+            "shipping_fee": "20.00",
+            "total": "127.97",
+            "placed_at": "2026-04-28 14:36:24",
+            "items_count": 2,
+            "created_at": "2026-04-28 14:36:24",
+            "updated_at": "2026-04-28 14:45:41"
+        }
+    ],
+    "links": {
+        "first": "http:\/\/10.193.164.192:8000\/api\/admin\/orders?page=1",
+        "last": "http:\/\/10.193.164.192:8000\/api\/admin\/orders?page=1",
+        "prev": null,
+        "next": null
+    },
+    "meta": {
+        "current_page": 1,
+        "from": 1,
+        "last_page": 1,
+        "links": [
+            {
+                "url": null,
+                "label": "&laquo; Previous",
+                "page": null,
+                "active": false
+            },
+            {
+                "url": "http:\/\/10.193.164.192:8000\/api\/admin\/orders?page=1",
+                "label": "1",
+                "page": 1,
+                "active": true
+            },
+            {
+                "url": null,
+                "label": "Next &raquo;",
+                "page": null,
+                "active": false
+            }
+        ],
+        "path": "http:\/\/10.193.164.192:8000\/api\/admin\/orders",
+        "per_page": 15,
+        "to": 1,
+        "total": 1
+    }
+}

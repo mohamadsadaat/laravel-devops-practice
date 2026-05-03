@@ -1,0 +1,19 @@
+{
+    "method": "POST",
+    "url": "\/api\/admin\/products",
+    "headers": {
+        "Authorization": "Bearer {token}",
+        "Accept": "application\/json",
+        "Content-Type": "application\/json"
+    },
+    "body": {
+        "name": "Blue T-Shirt for Kids with Special Design",
+        "category_id": 1,
+        "base_price": 25.99,
+        "brand": "KidsBrand",
+        "gender": "unisex",
+        "status": "active",
+        "description": "A beautiful blue t-shirt designed specifically for kids with special patterns and comfortable fabric."
+    },
+    "auth_required": true
+}

@@ -1,0 +1,13 @@
+{
+    "method": "GET",
+    "url": "\/api\/admin\/orders",
+    "headers": {
+        "Authorization": "Bearer {token}",
+        "Accept": "application\/json"
+    },
+    "query_params": {
+        "search": "(optional)",
+        "status": "(optional: pending,confirmed,preparing,shipped,delivered,cancelled)",
+        "per_page": "(optional, default:15)"
+    }
+}

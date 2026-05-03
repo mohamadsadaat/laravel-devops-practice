@@ -1,0 +1,25 @@
+{
+    "method": "POST",
+    "url": "\/api\/checkout",
+    "headers": {
+        "Accept": "application\/json"
+    },
+    "body": {
+        "customer_name": "محمد حسن",
+        "customer_phone": "07701234569",
+        "customer_address": "البصرة، شارع العرب",
+        "city": "البصرة",
+        "notes": "طلب لمحمد - أولاد فقط",
+        "shipping_fee": 25,
+        "items": [
+            {
+                "variant_id": 13,
+                "quantity": 1
+            },
+            {
+                "variant_id": 14,
+                "quantity": 2
+            }
+        ]
+    }
+}

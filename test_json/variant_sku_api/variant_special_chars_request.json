@@ -1,0 +1,18 @@
+{
+    "method": "POST",
+    "url": "\/api\/admin\/products\/21\/variants",
+    "headers": {
+        "Authorization": "Bearer {token}",
+        "Accept": "application\/json",
+        "Content-Type": "application\/json"
+    },
+    "body": {
+        "color_name": "Red & Blue",
+        "size_name": "Size M\/L",
+        "age_label": "Age 3-5 years",
+        "price": 35.99,
+        "quantity_on_hand": 25,
+        "is_active": true
+    },
+    "auth_required": true
+}

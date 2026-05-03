@@ -1,0 +1,20 @@
+{
+    "method": "POST",
+    "url": "\/api\/admin\/products",
+    "headers": {
+        "Authorization": "Bearer {token}",
+        "Accept": "application\/json",
+        "Content-Type": "application\/json"
+    },
+    "body": {
+        "name": "Green Pants for Boys",
+        "slug": "custom-green-pants-2024",
+        "category_id": 1,
+        "base_price": 35.99,
+        "brand": "SportBrand",
+        "gender": "boy",
+        "status": "active",
+        "description": "Comfortable green pants for active boys."
+    },
+    "auth_required": true
+}

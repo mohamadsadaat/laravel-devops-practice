@@ -1,0 +1,74 @@
+{
+    "message": "Order placed successfully.",
+    "data": {
+        "id": 13,
+        "order_number": "ORD-20260428-NOMD9E",
+        "customer_name": "Ali Mohammed",
+        "customer_phone": "07901234567",
+        "customer_address": "Baghdad, Al-Karrada, St. 42",
+        "city": "Baghdad",
+        "notes": "Test order with images",
+        "status": "pending",
+        "subtotal": "1000.00",
+        "shipping_fee": "25.00",
+        "total": "1025.00",
+        "placed_at": "2026-04-28 09:25:57",
+        "items_count": 2,
+        "items": [
+            {
+                "id": 19,
+                "product": {
+                    "id": 10,
+                    "name": "Stock Test Product",
+                    "slug": "stock-test-1777368357",
+                    "image": "http:\/\/10.193.164.192:8000\/storage\/product-images\/test-v1.png"
+                },
+                "variant": {
+                    "id": 16,
+                    "sku": "STK-RED-1777368357",
+                    "color_name": "red",
+                    "size_name": "L",
+                    "age_label": "12-18m",
+                    "image": "http:\/\/10.193.164.192:8000\/storage\/product-images\/test-v1.png"
+                },
+                "product_id": 10,
+                "variant_id": 16,
+                "product_name_snapshot": "Stock Test Product",
+                "variant_snapshot": "red \/ L \/ 12-18m",
+                "sku_snapshot": "STK-RED-1777368357",
+                "unit_price": "300.00",
+                "quantity": 1,
+                "line_total": "300.00",
+                "created_at": "2026-04-28 09:25:57"
+            },
+            {
+                "id": 20,
+                "product": {
+                    "id": 10,
+                    "name": "Stock Test Product",
+                    "slug": "stock-test-1777368357",
+                    "image": "http:\/\/10.193.164.192:8000\/storage\/product-images\/test-v1.png"
+                },
+                "variant": {
+                    "id": 17,
+                    "sku": "STK-GRN-1777368357",
+                    "color_name": "green",
+                    "size_name": "XL",
+                    "age_label": "18-24m",
+                    "image": "http:\/\/10.193.164.192:8000\/storage\/product-images\/test-v2.png"
+                },
+                "product_id": 10,
+                "variant_id": 17,
+                "product_name_snapshot": "Stock Test Product",
+                "variant_snapshot": "green \/ XL \/ 18-24m",
+                "sku_snapshot": "STK-GRN-1777368357",
+                "unit_price": "350.00",
+                "quantity": 2,
+                "line_total": "700.00",
+                "created_at": "2026-04-28 09:25:57"
+            }
+        ],
+        "created_at": "2026-04-28 09:25:57",
+        "updated_at": "2026-04-28 09:25:57"
+    }
+}

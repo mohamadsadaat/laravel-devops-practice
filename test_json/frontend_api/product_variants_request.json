@@ -1,0 +1,8 @@
+{
+    "method": "GET",
+    "url": "\/api\/admin\/products\/{product_id}\/variants",
+    "headers": {
+        "Accept": "application\/json"
+    },
+    "auth_required": false
+}

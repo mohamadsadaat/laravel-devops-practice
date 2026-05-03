@@ -1,0 +1,15 @@
+{
+    "method": "GET",
+    "url": "\/api\/admin\/products",
+    "headers": {
+        "Authorization": "Bearer {token}",
+        "Accept": "application\/json"
+    },
+    "query_params": {
+        "gender": "girl",
+        "search": "p",
+        "status": "(optional)",
+        "category_id": "(optional)",
+        "per_page": "(optional, default: 15)"
+    }
+}

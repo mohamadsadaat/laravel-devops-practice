@@ -1,0 +1,26 @@
+{
+    "message": "Product variant created successfully.",
+    "data": {
+        "id": 15,
+        "product": {
+            "id": 21,
+            "name": "jacket",
+            "slug": "jacket"
+        },
+        "product_id": 21,
+        "sku": "JACKE-RED--SIZ-AGE",
+        "color_name": "Red & Blue",
+        "size_name": "Size M\/L",
+        "age_label": "Age 3-5 years",
+        "price": "35.99",
+        "compare_price": null,
+        "quantity_on_hand": 25,
+        "quantity_reserved": 0,
+        "available_quantity": 25,
+        "is_active": true,
+        "images_count": 0,
+        "stock_movements_count": 0,
+        "created_at": "2026-04-29 13:32:18",
+        "updated_at": "2026-04-29 13:32:18"
+    }
+}

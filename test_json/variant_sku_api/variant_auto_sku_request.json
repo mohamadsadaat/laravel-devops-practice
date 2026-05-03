@@ -1,0 +1,18 @@
+{
+    "method": "POST",
+    "url": "\/api\/admin\/products\/21\/variants",
+    "headers": {
+        "Authorization": "Bearer {token}",
+        "Accept": "application\/json",
+        "Content-Type": "application\/json"
+    },
+    "body": {
+        "color_name": "Blue",
+        "size_name": "Small",
+        "age_label": "2-4 years",
+        "price": 25.99,
+        "quantity_on_hand": 50,
+        "is_active": true
+    },
+    "auth_required": true
+}

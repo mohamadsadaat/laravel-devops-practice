@@ -1,0 +1,15 @@
+{
+    "method": "GET",
+    "url": "\/api\/products",
+    "headers": {
+        "Accept": "application\/json"
+    },
+    "query_params": {
+        "search": "(optional)",
+        "status": "(optional)",
+        "category_id": "(optional)",
+        "gender": "(optional)",
+        "per_page": "(optional, default: 15)"
+    },
+    "auth_required": false
+}

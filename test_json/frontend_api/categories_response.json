@@ -1,0 +1,75 @@
+{
+    "data": [
+        {
+            "id": 4,
+            "name": "c3",
+            "slug": "c3",
+            "image_path": "categories\/4VQBVua5EU0NmcI65lftdT1UZYTglIFHKve4RVVw.jpg",
+            "image_url": "http:\/\/10.193.164.192:8000\/storage\/categories\/4VQBVua5EU0NmcI65lftdT1UZYTglIFHKve4RVVw.jpg",
+            "is_active": true,
+            "sort_order": 1,
+            "products_count": 0,
+            "created_at": "2026-04-28 18:36:41",
+            "updated_at": "2026-04-28 18:36:41"
+        },
+        {
+            "id": 1,
+            "name": "c1",
+            "slug": "c1",
+            "image_path": "categories\/pV1ZYfc1SWSNxs7Mlafotbd8XEkGSxrmNun3C4GT.jpg",
+            "image_url": "http:\/\/10.193.164.192:8000\/storage\/categories\/pV1ZYfc1SWSNxs7Mlafotbd8XEkGSxrmNun3C4GT.jpg",
+            "is_active": true,
+            "sort_order": 1,
+            "products_count": 4,
+            "created_at": "2026-04-28 09:49:45",
+            "updated_at": "2026-04-28 09:49:45"
+        },
+        {
+            "id": 2,
+            "name": "c2",
+            "slug": "c2",
+            "image_path": "categories\/Aw5EIqlmqF7xaZ9l27pnuEL8UgCF7LccufYvdlV1.png",
+            "image_url": "http:\/\/10.193.164.192:8000\/storage\/categories\/Aw5EIqlmqF7xaZ9l27pnuEL8UgCF7LccufYvdlV1.png",
+            "is_active": true,
+            "sort_order": 2,
+            "products_count": 3,
+            "created_at": "2026-04-28 10:56:47",
+            "updated_at": "2026-04-28 10:56:47"
+        }
+    ],
+    "links": {
+        "first": "http:\/\/10.193.164.192:8000\/api\/admin\/categories?page=1",
+        "last": "http:\/\/10.193.164.192:8000\/api\/admin\/categories?page=1",
+        "prev": null,
+        "next": null
+    },
+    "meta": {
+        "current_page": 1,
+        "from": 1,
+        "last_page": 1,
+        "links": [
+            {
+                "url": null,
+                "label": "&laquo; Previous",
+                "page": null,
+                "active": false
+            },
+            {
+                "url": "http:\/\/10.193.164.192:8000\/api\/admin\/categories?page=1",
+                "label": "1",
+                "page": 1,
+                "active": true
+            },
+            {
+                "url": null,
+                "label": "Next &raquo;",
+                "page": null,
+                "active": false
+            }
+        ],
+        "path": "http:\/\/10.193.164.192:8000\/api\/admin\/categories",
+        "per_page": 15,
+        "to": 3,
+        "total": 3
+    }
+}

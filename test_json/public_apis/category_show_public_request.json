@@ -1,0 +1,8 @@
+{
+    "method": "GET",
+    "url": "\/api\/categories\/{id}",
+    "headers": {
+        "Accept": "application\/json"
+    },
+    "auth_required": false
+}

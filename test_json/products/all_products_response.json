@@ -1,0 +1,83 @@
+{
+    "data": [
+        {
+            "id": 2,
+            "category": {
+                "id": 2,
+                "name": "c2",
+                "slug": "c2"
+            },
+            "category_id": 2,
+            "name": "p22",
+            "slug": "p22",
+            "description": "flaksnsaklfmaslkfaslkfn asl",
+            "status": "draft",
+            "base_price": "200.00",
+            "brand": "iii",
+            "gender": null,
+            "is_featured": false,
+            "variants_count": 2,
+            "images_count": 3,
+            "primary_image_url": "http:\/\/10.193.164.192:8000\/storage\/product-images\/I4IBq1532ETEexdgxTyKowq17EWZc25AVSBVchCM.jpg",
+            "created_at": "2026-04-28 10:57:42",
+            "updated_at": "2026-04-28 10:57:42"
+        },
+        {
+            "id": 1,
+            "category": {
+                "id": 1,
+                "name": "c1",
+                "slug": "c1"
+            },
+            "category_id": 1,
+            "name": "p1",
+            "slug": "p1",
+            "description": "wecome i am first produect",
+            "status": "active",
+            "base_price": "10.00",
+            "brand": "PP11",
+            "gender": null,
+            "is_featured": false,
+            "variants_count": 2,
+            "images_count": 3,
+            "primary_image_url": "http:\/\/10.193.164.192:8000\/storage\/product-images\/xkIAcnKRVLpV5y0HRqDezF9YxHZr3uHCakEqEcBE.jpg",
+            "created_at": "2026-04-28 09:53:47",
+            "updated_at": "2026-04-28 09:53:47"
+        }
+    ],
+    "links": {
+        "first": "http:\/\/10.193.164.192:8000\/api\/admin\/products?page=1",
+        "last": "http:\/\/10.193.164.192:8000\/api\/admin\/products?page=1",
+        "prev": null,
+        "next": null
+    },
+    "meta": {
+        "current_page": 1,
+        "from": 1,
+        "last_page": 1,
+        "links": [
+            {
+                "url": null,
+                "label": "&laquo; Previous",
+                "page": null,
+                "active": false
+            },
+            {
+                "url": "http:\/\/10.193.164.192:8000\/api\/admin\/products?page=1",
+                "label": "1",
+                "page": 1,
+                "active": true
+            },
+            {
+                "url": null,
+                "label": "Next &raquo;",
+                "page": null,
+                "active": false
+            }
+        ],
+        "path": "http:\/\/10.193.164.192:8000\/api\/admin\/products",
+        "per_page": 15,
+        "to": 2,
+        "total": 2
+    }
+}

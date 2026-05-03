@@ -1,0 +1,24 @@
+{
+    "data": {
+        "id": 1,
+        "category": {
+            "id": 1,
+            "name": "c1",
+            "slug": "c1"
+        },
+        "category_id": 1,
+        "name": "p1",
+        "slug": "p1",
+        "description": "wecome i am first produect",
+        "status": "active",
+        "base_price": "10.00",
+        "brand": "PP11",
+        "gender": "girl",
+        "is_featured": false,
+        "variants_count": 2,
+        "images_count": 3,
+        "primary_image_url": "http:\/\/10.193.164.192:8000\/storage\/product-images\/xkIAcnKRVLpV5y0HRqDezF9YxHZr3uHCakEqEcBE.jpg",
+        "created_at": "2026-04-28 09:53:47",
+        "updated_at": "2026-04-28 09:53:47"
+    }
+}

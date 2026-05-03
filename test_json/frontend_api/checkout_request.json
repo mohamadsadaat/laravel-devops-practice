@@ -1,0 +1,27 @@
+{
+    "method": "POST",
+    "url": "\/api\/checkout",
+    "headers": {
+        "Accept": "application\/json",
+        "Content-Type": "application\/json"
+    },
+    "body": {
+        "customer_name": "أحمد محمد",
+        "customer_phone": "07901234567",
+        "customer_address": "بغداد، الكرادة، شارع فلسطين",
+        "city": "بغداد",
+        "notes": "طلب تجريبي للـ Frontend API",
+        "shipping_fee": 15,
+        "items": [
+            {
+                "variant_id": 1,
+                "quantity": 2
+            },
+            {
+                "variant_id": 2,
+                "quantity": 1
+            }
+        ]
+    },
+    "auth_required": false
+}

@@ -1,0 +1,94 @@
+{
+    "message": "Order placed successfully.",
+    "data": {
+        "id": 2,
+        "order_number": "ORD-20260428-N6OWCI",
+        "customer_name": "أحمد محمد",
+        "customer_phone": "07901234567",
+        "customer_address": "بغداد، الكرادة، شارع فلسطين",
+        "city": "بغداد",
+        "notes": "طلب لأحمد - منتجات متعددة",
+        "status": "pending",
+        "subtotal": "250.94",
+        "shipping_fee": "15.00",
+        "total": "265.94",
+        "placed_at": "2026-04-28 14:36:24",
+        "items_count": 3,
+        "items": [
+            {
+                "id": 2,
+                "product": {
+                    "id": 5,
+                    "name": "Unisex Yellow Hoodie",
+                    "slug": "unisex-yellow-hoodie-1777379132"
+                },
+                "variant": {
+                    "id": 8,
+                    "sku": "UNI-S-1777386984407",
+                    "color_name": "Purple",
+                    "size_name": "S",
+                    "age_label": "2-4 years"
+                },
+                "product_id": 5,
+                "variant_id": 8,
+                "product_name_snapshot": "Unisex Yellow Hoodie",
+                "variant_snapshot": "Purple \/ S \/ 2-4 years",
+                "sku_snapshot": "UNI-S-1777386984407",
+                "unit_price": "45.99",
+                "quantity": 2,
+                "line_total": "91.98",
+                "created_at": "2026-04-28 14:36:24"
+            },
+            {
+                "id": 3,
+                "product": {
+                    "id": 5,
+                    "name": "Unisex Yellow Hoodie",
+                    "slug": "unisex-yellow-hoodie-1777379132"
+                },
+                "variant": {
+                    "id": 9,
+                    "sku": "UNI-M-1777386984323",
+                    "color_name": "Purple",
+                    "size_name": "M",
+                    "age_label": "4-6 years"
+                },
+                "product_id": 5,
+                "variant_id": 9,
+                "product_name_snapshot": "Unisex Yellow Hoodie",
+                "variant_snapshot": "Purple \/ M \/ 4-6 years",
+                "sku_snapshot": "UNI-M-1777386984323",
+                "unit_price": "50.99",
+                "quantity": 1,
+                "line_total": "50.99",
+                "created_at": "2026-04-28 14:36:24"
+            },
+            {
+                "id": 4,
+                "product": {
+                    "id": 4,
+                    "name": "Girls Pink Dress",
+                    "slug": "girls-pink-dress-1777379132"
+                },
+                "variant": {
+                    "id": 10,
+                    "sku": "GIR-S-1777386984613",
+                    "color_name": "Yellow",
+                    "size_name": "S",
+                    "age_label": "2-4 years"
+                },
+                "product_id": 4,
+                "variant_id": 10,
+                "product_name_snapshot": "Girls Pink Dress",
+                "variant_snapshot": "Yellow \/ S \/ 2-4 years",
+                "sku_snapshot": "GIR-S-1777386984613",
+                "unit_price": "35.99",
+                "quantity": 3,
+                "line_total": "107.97",
+                "created_at": "2026-04-28 14:36:24"
+            }
+        ],
+        "created_at": "2026-04-28 14:36:24",
+        "updated_at": "2026-04-28 14:36:24"
+    }
+}

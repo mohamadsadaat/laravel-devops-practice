@@ -1,0 +1,70 @@
+{
+    "message": "Order placed successfully.",
+    "data": {
+        "id": 7,
+        "order_number": "ORD-20260428-6O2SN0",
+        "customer_name": "Fatima Khalil",
+        "customer_phone": "07901112233",
+        "customer_address": "Damascus, Abu Rummaneh, St. 15",
+        "city": "Damascus",
+        "notes": "Please call before delivery",
+        "status": "pending",
+        "subtotal": "300.00",
+        "shipping_fee": "30.00",
+        "total": "330.00",
+        "placed_at": "2026-04-28 08:37:12",
+        "items_count": 2,
+        "items": [
+            {
+                "id": 9,
+                "product": {
+                    "id": 1,
+                    "name": "baby fist",
+                    "slug": "baby-11"
+                },
+                "variant": {
+                    "id": 2,
+                    "sku": "baby-998",
+                    "color_name": "white",
+                    "size_name": "6-12m",
+                    "age_label": "2-3 years"
+                },
+                "product_id": 1,
+                "variant_id": 2,
+                "product_name_snapshot": "baby fist",
+                "variant_snapshot": "white \/ 6-12m \/ 2-3 years",
+                "sku_snapshot": "baby-998",
+                "unit_price": "100.00",
+                "quantity": 2,
+                "line_total": "200.00",
+                "created_at": "2026-04-28 08:37:12"
+            },
+            {
+                "id": 10,
+                "product": {
+                    "id": 1,
+                    "name": "baby fist",
+                    "slug": "baby-11"
+                },
+                "variant": {
+                    "id": 1,
+                    "sku": "baby-999",
+                    "color_name": "yellow",
+                    "size_name": "6-12m",
+                    "age_label": "1-2 years"
+                },
+                "product_id": 1,
+                "variant_id": 1,
+                "product_name_snapshot": "baby fist",
+                "variant_snapshot": "yellow \/ 6-12m \/ 1-2 years",
+                "sku_snapshot": "baby-999",
+                "unit_price": "100.00",
+                "quantity": 1,
+                "line_total": "100.00",
+                "created_at": "2026-04-28 08:37:12"
+            }
+        ],
+        "created_at": "2026-04-28 08:37:12",
+        "updated_at": "2026-04-28 08:37:12"
+    }
+}

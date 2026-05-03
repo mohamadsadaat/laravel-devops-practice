@@ -1,0 +1,15 @@
+{
+    "method": "POST",
+    "url": "\/api\/admin\/variants\/17\/inventory\/adjust",
+    "headers": {
+        "Authorization": "Bearer {token}",
+        "Accept": "application\/json",
+        "Content-Type": "application\/json"
+    },
+    "body": {
+        "action": "remove",
+        "quantity": 5,
+        "notes": "Test manual removal"
+    },
+    "auth_required": true
+}

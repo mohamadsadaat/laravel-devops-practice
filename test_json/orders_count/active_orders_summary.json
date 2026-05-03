@@ -1,0 +1,40 @@
+{
+    "total_orders": 4,
+    "active_orders_count": 3,
+    "inactive_orders_count": 1,
+    "status_breakdown": {
+        "pending": 2,
+        "confirmed": 1,
+        "delivered": 1
+    },
+    "active_orders": [
+        {
+            "id": 4,
+            "order_number": "ORD-20260428-DFOXC1",
+            "customer_name": "أحمد محمد",
+            "status": "pending",
+            "total": "55.00",
+            "created_at": "2026-04-28 19:07:57"
+        },
+        {
+            "id": 3,
+            "order_number": "ORD-20260428-WW1Z6J",
+            "customer_name": "فاطمة علي",
+            "status": "confirmed",
+            "total": "127.97",
+            "created_at": "2026-04-28 14:36:24"
+        },
+        {
+            "id": 2,
+            "order_number": "ORD-20260428-N6OWCI",
+            "customer_name": "أحمد محمد",
+            "status": "pending",
+            "total": "265.94",
+            "created_at": "2026-04-28 14:36:24"
+        }
+    ],
+    "excluded_statuses": [
+        "delivered",
+        "cancelled"
+    ]
+}

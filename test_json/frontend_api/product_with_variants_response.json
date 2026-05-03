@@ -1,0 +1,90 @@
+{
+    "product": {
+        "id": 1,
+        "name": "p1",
+        "variants": [
+            {
+                "id": 2,
+                "product_id": 1,
+                "sku": "v12",
+                "color_name": "cream",
+                "size_name": "3-6m",
+                "age_label": "0-3 months",
+                "price": 20,
+                "compare_price": 20,
+                "quantity_on_hand": 20,
+                "quantity_reserved": 10,
+                "available_quantity": 10,
+                "is_active": true,
+                "image": "http:\/\/10.193.164.192:8000\/storage\/product-images\/F9S8Hverx1pTLjUSIMmf8DGWhY3B2FRbAlOVcQdm.jpg",
+                "images": [
+                    {
+                        "id": 3,
+                        "path": "product-images\/F9S8Hverx1pTLjUSIMmf8DGWhY3B2FRbAlOVcQdm.jpg",
+                        "url": "http:\/\/10.193.164.192:8000\/storage\/product-images\/F9S8Hverx1pTLjUSIMmf8DGWhY3B2FRbAlOVcQdm.jpg",
+                        "alt_text": "Image 3",
+                        "sort_order": 0,
+                        "is_primary": false
+                    }
+                ]
+            },
+            {
+                "id": 17,
+                "product_id": 1,
+                "sku": "P1-M-1777386984740",
+                "color_name": "Red",
+                "size_name": "M",
+                "age_label": "4-6 years",
+                "price": 15,
+                "compare_price": null,
+                "quantity_on_hand": 50,
+                "quantity_reserved": 0,
+                "available_quantity": 50,
+                "is_active": true,
+                "image": null,
+                "images": []
+            },
+            {
+                "id": 16,
+                "product_id": 1,
+                "sku": "P1-S-1777386984839",
+                "color_name": "Red",
+                "size_name": "S",
+                "age_label": "2-4 years",
+                "price": 10,
+                "compare_price": null,
+                "quantity_on_hand": 50,
+                "quantity_reserved": 0,
+                "available_quantity": 50,
+                "is_active": true,
+                "image": null,
+                "images": []
+            },
+            {
+                "id": 1,
+                "product_id": 1,
+                "sku": "v11",
+                "color_name": "white",
+                "size_name": "0-3m",
+                "age_label": "0-3 months",
+                "price": 10,
+                "compare_price": 20,
+                "quantity_on_hand": 20,
+                "quantity_reserved": 2,
+                "available_quantity": 18,
+                "is_active": true,
+                "image": "http:\/\/10.193.164.192:8000\/storage\/product-images\/uqhji1Slaj4X9jQbAG6keVuAS7E6xNAwgjoMLfch.jpg",
+                "images": [
+                    {
+                        "id": 2,
+                        "path": "product-images\/uqhji1Slaj4X9jQbAG6keVuAS7E6xNAwgjoMLfch.jpg",
+                        "url": "http:\/\/10.193.164.192:8000\/storage\/product-images\/uqhji1Slaj4X9jQbAG6keVuAS7E6xNAwgjoMLfch.jpg",
+                        "alt_text": "Image 2",
+                        "sort_order": 0,
+                        "is_primary": false
+                    }
+                ]
+            }
+        ]
+    }
+}

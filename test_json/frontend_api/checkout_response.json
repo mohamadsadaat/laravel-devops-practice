@@ -1,0 +1,70 @@
+{
+    "message": "Order placed successfully.",
+    "data": {
+        "id": 4,
+        "order_number": "ORD-20260428-DFOXC1",
+        "customer_name": "أحمد محمد",
+        "customer_phone": "07901234567",
+        "customer_address": "بغداد، الكرادة، شارع فلسطين",
+        "city": "بغداد",
+        "notes": "طلب تجريبي للـ Frontend API",
+        "status": "pending",
+        "subtotal": "40.00",
+        "shipping_fee": "15.00",
+        "total": "55.00",
+        "placed_at": "2026-04-28 19:07:57",
+        "items_count": 2,
+        "items": [
+            {
+                "id": 7,
+                "product": {
+                    "id": 1,
+                    "name": "p1",
+                    "slug": "p1"
+                },
+                "variant": {
+                    "id": 1,
+                    "sku": "v11",
+                    "color_name": "white",
+                    "size_name": "0-3m",
+                    "age_label": "0-3 months"
+                },
+                "product_id": 1,
+                "variant_id": 1,
+                "product_name_snapshot": "p1",
+                "variant_snapshot": "white \/ 0-3m \/ 0-3 months",
+                "sku_snapshot": "v11",
+                "unit_price": "10.00",
+                "quantity": 2,
+                "line_total": "20.00",
+                "created_at": "2026-04-28 19:07:57"
+            },
+            {
+                "id": 8,
+                "product": {
+                    "id": 1,
+                    "name": "p1",
+                    "slug": "p1"
+                },
+                "variant": {
+                    "id": 2,
+                    "sku": "v12",
+                    "color_name": "cream",
+                    "size_name": "3-6m",
+                    "age_label": "0-3 months"
+                },
+                "product_id": 1,
+                "variant_id": 2,
+                "product_name_snapshot": "p1",
+                "variant_snapshot": "cream \/ 3-6m \/ 0-3 months",
+                "sku_snapshot": "v12",
+                "unit_price": "20.00",
+                "quantity": 1,
+                "line_total": "20.00",
+                "created_at": "2026-04-28 19:07:57"
+            }
+        ],
+        "created_at": "2026-04-28 19:07:57",
+        "updated_at": "2026-04-28 19:07:57"
+    }
+}

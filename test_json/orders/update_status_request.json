@@ -1,0 +1,15 @@
+{
+    "method": "PATCH",
+    "url": "\/api\/admin\/orders\/{order}\/status",
+    "headers": {
+        "Authorization": "Bearer {token}",
+        "Accept": "application\/json",
+        "Content-Type": "application\/json"
+    },
+    "route_params": {
+        "order": "order ID"
+    },
+    "body": {
+        "status": "pending | confirmed | preparing | shipped | delivered | cancelled"
+    }
+}

@@ -1,0 +1,23 @@
+{
+    "product": {
+        "id": "1",
+        "name": "child tshirt",
+        "total_revenue": 1000,
+        "total_quantity": 2,
+        "total_orders": 1,
+        "average_item_price": 500
+    },
+    "items": [
+        {
+            "order_id": 1,
+            "variant_id": 1,
+            "variant_sku": "child-1",
+            "variant_name": "blue\/12-18m",
+            "quantity": 2,
+            "unit_price": "500.00",
+            "total_price": 1000,
+            "order_status": "pending",
+            "created_at": "2026-04-29T11:33:41.000000Z"
+        }
+    ]
+}

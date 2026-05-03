@@ -1,0 +1,110 @@
+{
+    "data": [
+        {
+            "id": 1,
+            "name": "p1",
+            "slug": "p1",
+            "base_price": "10.00",
+            "brand": null,
+            "gender": "unisex",
+            "status": "active",
+            "total_sold": 6,
+            "total_remaining": 125,
+            "variants_count": 4,
+            "variants": [
+                {
+                    "id": 1,
+                    "sku": "v11",
+                    "color_name": "white",
+                    "size_name": "0-3m",
+                    "age_label": "0-3 months",
+                    "price": "10.00",
+                    "quantity_on_hand": 18,
+                    "quantity_reserved": 2,
+                    "available_quantity": 16,
+                    "total_sold": 2
+                },
+                {
+                    "id": 2,
+                    "sku": "v12",
+                    "color_name": "cream",
+                    "size_name": "3-6m",
+                    "age_label": "3-6 months",
+                    "price": "20.00",
+                    "quantity_on_hand": 19,
+                    "quantity_reserved": 10,
+                    "available_quantity": 9,
+                    "total_sold": 4
+                },
+                {
+                    "id": 8,
+                    "sku": "P1-S-1777386984839",
+                    "color_name": "Red",
+                    "size_name": "S",
+                    "age_label": "2-4 years",
+                    "price": "10.00",
+                    "quantity_on_hand": 50,
+                    "quantity_reserved": 0,
+                    "available_quantity": 50,
+                    "total_sold": 0
+                },
+                {
+                    "id": 9,
+                    "sku": "P1-M-1777386984740",
+                    "color_name": "Red",
+                    "size_name": "M",
+                    "age_label": "4-6 years",
+                    "price": "15.00",
+                    "quantity_on_hand": 50,
+                    "quantity_reserved": 0,
+                    "available_quantity": 50,
+                    "total_sold": 0
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "name": "Boys Blue T-Shirt",
+            "slug": "boys-blue-tshirt-1777379132",
+            "base_price": "25.99",
+            "brand": "KidsBrand",
+            "gender": "boy",
+            "status": "active",
+            "total_sold": 1,
+            "total_remaining": 99,
+            "variants_count": 2,
+            "variants": [
+                {
+                    "id": 5,
+                    "sku": "BOY-S-1777386984668",
+                    "color_name": "Blue",
+                    "size_name": "S",
+                    "age_label": "2-4 years",
+                    "price": "25.99",
+                    "quantity_on_hand": 49,
+                    "quantity_reserved": 0,
+                    "available_quantity": 49,
+                    "total_sold": 1
+                },
+                {
+                    "id": 6,
+                    "sku": "BOY-M-1777386984623",
+                    "color_name": "Blue",
+                    "size_name": "M",
+                    "age_label": "4-6 years",
+                    "price": "30.99",
+                    "quantity_on_hand": 50,
+                    "quantity_reserved": 0,
+                    "available_quantity": 50,
+                    "total_sold": 0
+                }
+            ]
+        }
+    ],
+    "summary": {
+        "total_products": 2,
+        "total_variants": 6,
+        "total_items_sold": 7,
+        "total_items_remaining": 224
+    }
+}

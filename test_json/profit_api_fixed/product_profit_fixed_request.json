@@ -1,0 +1,9 @@
+{
+    "method": "GET",
+    "url": "\/api\/admin\/profit\/product\/1",
+    "headers": {
+        "Authorization": "Bearer {token}",
+        "Accept": "application\/json"
+    },
+    "auth_required": true
+}

@@ -1,0 +1,15 @@
+{
+    "method": "POST",
+    "url": "\/api\/admin\/variants\/17\/inventory\/adjust",
+    "headers": {
+        "Authorization": "Bearer {token}",
+        "Accept": "application\/json",
+        "Content-Type": "application\/json"
+    },
+    "body": {
+        "action": "add",
+        "quantity": 10,
+        "notes": "Test manual addition"
+    },
+    "auth_required": true
+}

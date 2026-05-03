@@ -1,0 +1,11 @@
+{
+    "method": "GET",
+    "url": "\/api\/admin\/orders\/{order}",
+    "headers": {
+        "Authorization": "Bearer {token}",
+        "Accept": "application\/json"
+    },
+    "route_params": {
+        "order": "order ID"
+    }
+}

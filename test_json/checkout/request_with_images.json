@@ -1,0 +1,26 @@
+{
+    "method": "POST",
+    "url": "\/api\/checkout",
+    "headers": {
+        "Content-Type": "application\/json",
+        "Accept": "application\/json"
+    },
+    "body": {
+        "customer_name": "Ali Mohammed",
+        "customer_phone": "07901234567",
+        "customer_address": "Baghdad, Al-Karrada, St. 42",
+        "city": "Baghdad",
+        "notes": "Test order with images",
+        "shipping_fee": 25,
+        "items": [
+            {
+                "variant_id": 16,
+                "quantity": 1
+            },
+            {
+                "variant_id": 17,
+                "quantity": 2
+            }
+        ]
+    }
+}

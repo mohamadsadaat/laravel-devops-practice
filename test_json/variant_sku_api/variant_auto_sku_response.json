@@ -1,0 +1,26 @@
+{
+    "message": "Product variant created successfully.",
+    "data": {
+        "id": 13,
+        "product": {
+            "id": 21,
+            "name": "jacket",
+            "slug": "jacket"
+        },
+        "product_id": 21,
+        "sku": "JACKE-BLUE-SMA-2-4",
+        "color_name": "Blue",
+        "size_name": "Small",
+        "age_label": "2-4 years",
+        "price": "25.99",
+        "compare_price": null,
+        "quantity_on_hand": 50,
+        "quantity_reserved": 0,
+        "available_quantity": 50,
+        "is_active": true,
+        "images_count": 0,
+        "stock_movements_count": 0,
+        "created_at": "2026-04-29 13:32:18",
+        "updated_at": "2026-04-29 13:32:18"
+    }
+}

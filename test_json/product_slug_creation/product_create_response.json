@@ -1,0 +1,24 @@
+{
+    "message": "Product created successfully.",
+    "data": {
+        "id": 8,
+        "category": {
+            "id": 1,
+            "name": "child cat",
+            "slug": "child-cat"
+        },
+        "category_id": 1,
+        "name": "Blue T-Shirt for Kids with Special Design",
+        "slug": "blue-t-shirt-for-kids-with-special-design",
+        "description": "A beautiful blue t-shirt designed specifically for kids with special patterns and comfortable fabric.",
+        "status": "active",
+        "base_price": "25.99",
+        "brand": "KidsBrand",
+        "gender": null,
+        "is_featured": false,
+        "variants_count": 0,
+        "images_count": 0,
+        "created_at": "2026-04-29 13:11:08",
+        "updated_at": "2026-04-29 13:11:08"
+    }
+}

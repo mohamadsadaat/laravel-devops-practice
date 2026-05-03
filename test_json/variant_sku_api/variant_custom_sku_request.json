@@ -1,0 +1,19 @@
+{
+    "method": "POST",
+    "url": "\/api\/admin\/products\/21\/variants",
+    "headers": {
+        "Authorization": "Bearer {token}",
+        "Accept": "application\/json",
+        "Content-Type": "application\/json"
+    },
+    "body": {
+        "sku": "CUSTOM-BLUE-MED-001",
+        "color_name": "Blue",
+        "size_name": "Medium",
+        "age_label": "4-6 years",
+        "price": 29.99,
+        "quantity_on_hand": 30,
+        "is_active": true
+    },
+    "auth_required": true
+}

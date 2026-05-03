@@ -1,0 +1,25 @@
+{
+    "method": "POST",
+    "url": "\/api\/checkout",
+    "headers": {
+        "Accept": "application\/json"
+    },
+    "body": {
+        "customer_name": "فاطمة علي",
+        "customer_phone": "07801234568",
+        "customer_address": "أربيل، شارع 60 متر",
+        "city": "أربيل",
+        "notes": "طلب لفاطمة - بنات فقط",
+        "shipping_fee": 20,
+        "items": [
+            {
+                "variant_id": 11,
+                "quantity": 2
+            },
+            {
+                "variant_id": 12,
+                "quantity": 1
+            }
+        ]
+    }
+}

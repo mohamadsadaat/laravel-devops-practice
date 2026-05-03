@@ -1,0 +1,26 @@
+{
+    "method": "POST",
+    "url": "\/api\/checkout",
+    "headers": {
+        "Content-Type": "application\/json",
+        "Accept": "application\/json"
+    },
+    "body": {
+        "customer_name": "Fatima Khalil",
+        "customer_phone": "07901112233",
+        "customer_address": "Damascus, Abu Rummaneh, St. 15",
+        "city": "Damascus",
+        "notes": "Please call before delivery",
+        "shipping_fee": 30,
+        "items": [
+            {
+                "variant_id": 2,
+                "quantity": 2
+            },
+            {
+                "variant_id": 1,
+                "quantity": 1
+            }
+        ]
+    }
+}

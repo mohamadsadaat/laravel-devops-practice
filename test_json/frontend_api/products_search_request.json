@@ -1,0 +1,11 @@
+{
+    "method": "GET",
+    "url": "\/api\/admin\/products",
+    "headers": {
+        "Accept": "application\/json"
+    },
+    "query_params": {
+        "search": "shirt"
+    },
+    "auth_required": false
+}

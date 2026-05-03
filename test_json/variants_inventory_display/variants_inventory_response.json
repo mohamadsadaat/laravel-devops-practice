@@ -1,0 +1,131 @@
+{
+    "data": [
+        {
+            "id": 17,
+            "product": {
+                "id": 1,
+                "name": "p1",
+                "slug": "p1"
+            },
+            "product_id": 1,
+            "sku": "P1-M-1777386984740",
+            "color_name": "Red",
+            "size_name": "M",
+            "age_label": "4-6 years",
+            "price": "15.00",
+            "compare_price": null,
+            "quantity_on_hand": 25,
+            "quantity_reserved": 0,
+            "available_quantity": 25,
+            "is_active": true,
+            "images_count": 0,
+            "stock_movements_count": 3,
+            "created_at": "2026-04-28 14:36:24",
+            "updated_at": "2026-04-29 07:22:24"
+        },
+        {
+            "id": 16,
+            "product": {
+                "id": 1,
+                "name": "p1",
+                "slug": "p1"
+            },
+            "product_id": 1,
+            "sku": "P1-S-1777386984839",
+            "color_name": "Red",
+            "size_name": "S",
+            "age_label": "2-4 years",
+            "price": "10.00",
+            "compare_price": null,
+            "quantity_on_hand": 50,
+            "quantity_reserved": 0,
+            "available_quantity": 50,
+            "is_active": true,
+            "images_count": 0,
+            "stock_movements_count": 0,
+            "created_at": "2026-04-28 14:36:24",
+            "updated_at": "2026-04-28 14:36:24"
+        },
+        {
+            "id": 2,
+            "product": {
+                "id": 1,
+                "name": "p1",
+                "slug": "p1"
+            },
+            "product_id": 1,
+            "sku": "v12",
+            "color_name": "cream",
+            "size_name": "3-6m",
+            "age_label": "0-3 months",
+            "price": "20.00",
+            "compare_price": "20.00",
+            "quantity_on_hand": 20,
+            "quantity_reserved": 10,
+            "available_quantity": 10,
+            "is_active": true,
+            "images_count": 1,
+            "stock_movements_count": 4,
+            "created_at": "2026-04-28 09:55:08",
+            "updated_at": "2026-04-28 21:05:59"
+        },
+        {
+            "id": 1,
+            "product": {
+                "id": 1,
+                "name": "p1",
+                "slug": "p1"
+            },
+            "product_id": 1,
+            "sku": "v11",
+            "color_name": "white",
+            "size_name": "0-3m",
+            "age_label": "0-3 months",
+            "price": "10.00",
+            "compare_price": "20.00",
+            "quantity_on_hand": 20,
+            "quantity_reserved": 2,
+            "available_quantity": 18,
+            "is_active": true,
+            "images_count": 1,
+            "stock_movements_count": 4,
+            "created_at": "2026-04-28 09:55:07",
+            "updated_at": "2026-04-28 21:10:50"
+        }
+    ],
+    "links": {
+        "first": "http:\/\/10.193.164.192:8000\/api\/admin\/products\/1\/variants?page=1",
+        "last": "http:\/\/10.193.164.192:8000\/api\/admin\/products\/1\/variants?page=1",
+        "prev": null,
+        "next": null
+    },
+    "meta": {
+        "current_page": 1,
+        "from": 1,
+        "last_page": 1,
+        "links": [
+            {
+                "url": null,
+                "label": "&laquo; Previous",
+                "page": null,
+                "active": false
+            },
+            {
+                "url": "http:\/\/10.193.164.192:8000\/api\/admin\/products\/1\/variants?page=1",
+                "label": "1",
+                "page": 1,
+                "active": true
+            },
+            {
+                "url": null,
+                "label": "Next &raquo;",
+                "page": null,
+                "active": false
+            }
+        ],
+        "path": "http:\/\/10.193.164.192:8000\/api\/admin\/products\/1\/variants",
+        "per_page": 15,
+        "to": 4,
+        "total": 4
+    }
+}

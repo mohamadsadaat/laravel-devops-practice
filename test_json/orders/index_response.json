@@ -1,0 +1,141 @@
+{
+    "data": [
+        {
+            "id": 6,
+            "order_number": "ORD-69EFD24BDD9CE",
+            "customer_name": "Sara Hassan",
+            "customer_phone": "0780123456",
+            "customer_address": "Erbil, 60m Street",
+            "city": "Erbil",
+            "notes": null,
+            "status": "confirmed",
+            "subtotal": "500.00",
+            "shipping_fee": "20.00",
+            "total": "520.00",
+            "placed_at": "2026-04-27 21:16:59",
+            "items_count": 2,
+            "created_at": "2026-04-27 21:16:59",
+            "updated_at": "2026-04-27 21:16:59"
+        },
+        {
+            "id": 5,
+            "order_number": "ORD-69EFD24BD913C",
+            "customer_name": "Ahmad Ali",
+            "customer_phone": "0790123456",
+            "customer_address": "Baghdad, Al-Mansour",
+            "city": "Baghdad",
+            "notes": "Please deliver before 5pm",
+            "status": "pending",
+            "subtotal": "650.00",
+            "shipping_fee": "25.00",
+            "total": "675.00",
+            "placed_at": "2026-04-27 21:16:59",
+            "items_count": 2,
+            "created_at": "2026-04-27 21:16:59",
+            "updated_at": "2026-04-27 21:16:59"
+        },
+        {
+            "id": 4,
+            "order_number": "ORD-20260427-NB4LBK",
+            "customer_name": "mahmod",
+            "customer_phone": "0999888765",
+            "customer_address": "dairattia",
+            "city": "hasaka",
+            "notes": "jjajjajjajindklsanl",
+            "status": "pending",
+            "subtotal": "16200.00",
+            "shipping_fee": "0.00",
+            "total": "16200.00",
+            "placed_at": "2026-04-27 20:38:07",
+            "items_count": 1,
+            "created_at": "2026-04-27 20:38:07",
+            "updated_at": "2026-04-27 20:38:07"
+        },
+        {
+            "id": 3,
+            "order_number": "ORD-20260427-FHJCJW",
+            "customer_name": "mohammed",
+            "customer_phone": "0999223311",
+            "customer_address": "gerod",
+            "city": "damascus",
+            "notes": "i want this order quiqly",
+            "status": "pending",
+            "subtotal": "5000.00",
+            "shipping_fee": "0.00",
+            "total": "5000.00",
+            "placed_at": "2026-04-27 20:32:58",
+            "items_count": 1,
+            "created_at": "2026-04-27 20:32:58",
+            "updated_at": "2026-04-27 20:32:58"
+        },
+        {
+            "id": 2,
+            "order_number": "ORD-20260427-QFJKPQ",
+            "customer_name": "emad",
+            "customer_phone": "09316919800",
+            "customer_address": "drbl",
+            "city": "damas",
+            "notes": "the product perfect",
+            "status": "pending",
+            "subtotal": "700.00",
+            "shipping_fee": "0.00",
+            "total": "700.00",
+            "placed_at": "2026-04-27 20:25:27",
+            "items_count": 1,
+            "created_at": "2026-04-27 20:25:27",
+            "updated_at": "2026-04-27 20:25:27"
+        },
+        {
+            "id": 1,
+            "order_number": "ORD-20260427-HDJOE2",
+            "customer_name": "emad",
+            "customer_phone": "0931691900",
+            "customer_address": "homs talpesa",
+            "city": "homs",
+            "notes": "i need it quiqly",
+            "status": "pending",
+            "subtotal": "1100.00",
+            "shipping_fee": "0.00",
+            "total": "1100.00",
+            "placed_at": "2026-04-27 20:23:04",
+            "items_count": 1,
+            "created_at": "2026-04-27 20:23:04",
+            "updated_at": "2026-04-27 20:23:04"
+        }
+    ],
+    "links": {
+        "first": "http:\/\/10.193.164.192:8000\/api\/admin\/orders?page=1",
+        "last": "http:\/\/10.193.164.192:8000\/api\/admin\/orders?page=1",
+        "prev": null,
+        "next": null
+    },
+    "meta": {
+        "current_page": 1,
+        "from": 1,
+        "last_page": 1,
+        "links": [
+            {
+                "url": null,
+                "label": "&laquo; Previous",
+                "page": null,
+                "active": false
+            },
+            {
+                "url": "http:\/\/10.193.164.192:8000\/api\/admin\/orders?page=1",
+                "label": "1",
+                "page": 1,
+                "active": true
+            },
+            {
+                "url": null,
+                "label": "Next &raquo;",
+                "page": null,
+                "active": false
+            }
+        ],
+        "path": "http:\/\/10.193.164.192:8000\/api\/admin\/orders",
+        "per_page": 15,
+        "to": 6,
+        "total": 6
+    }
+}

@@ -1,0 +1,14 @@
+{
+    "method": "POST",
+    "url": "\/api\/admin\/variants\/17\/inventory\/set",
+    "headers": {
+        "Authorization": "Bearer {token}",
+        "Accept": "application\/json",
+        "Content-Type": "application\/json"
+    },
+    "body": {
+        "quantity_on_hand": 25,
+        "notes": "Test set exact quantity"
+    },
+    "auth_required": true
+}

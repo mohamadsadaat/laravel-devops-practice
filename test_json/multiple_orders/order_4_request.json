@@ -1,0 +1,25 @@
+{
+    "method": "POST",
+    "url": "\/api\/checkout",
+    "headers": {
+        "Accept": "application\/json"
+    },
+    "body": {
+        "customer_name": "سارة أحمد",
+        "customer_phone": "07501234570",
+        "customer_address": "دهوك، شارع النخيل",
+        "city": "دهوك",
+        "notes": "طلب لسارة - منتجات موحدة",
+        "shipping_fee": 18,
+        "items": [
+            {
+                "variant_id": 15,
+                "quantity": 4
+            },
+            {
+                "variant_id": 16,
+                "quantity": 2
+            }
+        ]
+    }
+}

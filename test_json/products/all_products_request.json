@@ -1,0 +1,14 @@
+{
+    "method": "GET",
+    "url": "\/api\/admin\/products",
+    "headers": {
+        "Authorization": "Bearer {token}",
+        "Accept": "application\/json"
+    },
+    "query_params": {
+        "search": "(optional) - search in name, slug, brand",
+        "status": "(optional) - draft|active|archived",
+        "category_id": "(optional) - filter by category ID",
+        "per_page": "(optional, default: 15)"
+    }
+}

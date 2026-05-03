@@ -1,0 +1,60 @@
+{
+    "data": [
+        {
+            "id": 3,
+            "category": {
+                "id": 1,
+                "name": "c1",
+                "slug": "c1"
+            },
+            "category_id": 1,
+            "name": "Boys Blue T-Shirt",
+            "slug": "boys-blue-tshirt-1777379132",
+            "description": "Comfortable blue t-shirt for boys",
+            "status": "active",
+            "base_price": "25.99",
+            "brand": "KidsBrand",
+            "gender": "boy",
+            "is_featured": false,
+            "variants_count": 0,
+            "images_count": 0,
+            "created_at": "2026-04-28 12:25:32",
+            "updated_at": "2026-04-28 12:25:32"
+        }
+    ],
+    "links": {
+        "first": "http:\/\/10.193.164.192:8000\/api\/admin\/products?page=1",
+        "last": "http:\/\/10.193.164.192:8000\/api\/admin\/products?page=1",
+        "prev": null,
+        "next": null
+    },
+    "meta": {
+        "current_page": 1,
+        "from": 1,
+        "last_page": 1,
+        "links": [
+            {
+                "url": null,
+                "label": "&laquo; Previous",
+                "page": null,
+                "active": false
+            },
+            {
+                "url": "http:\/\/10.193.164.192:8000\/api\/admin\/products?page=1",
+                "label": "1",
+                "page": 1,
+                "active": true
+            },
+            {
+                "url": null,
+                "label": "Next &raquo;",
+                "page": null,
+                "active": false
+            }
+        ],
+        "path": "http:\/\/10.193.164.192:8000\/api\/admin\/products",
+        "per_page": 15,
+        "to": 1,
+        "total": 1
+    }
+}

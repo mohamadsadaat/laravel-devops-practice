@@ -1,0 +1,19 @@
+{
+    "total_orders": 4,
+    "active_orders_calculated": 3,
+    "status_breakdown": {
+        "pending": 2,
+        "confirmed": 1,
+        "delivered": 1
+    },
+    "excluded_statuses": [
+        "delivered",
+        "cancelled"
+    ],
+    "included_statuses": [
+        "pending",
+        "confirmed",
+        "preparing",
+        "shipped"
+    ]
+}

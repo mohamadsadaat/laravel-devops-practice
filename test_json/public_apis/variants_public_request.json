@@ -1,0 +1,13 @@
+{
+    "method": "GET",
+    "url": "\/api\/products.variants",
+    "headers": {
+        "Accept": "application\/json"
+    },
+    "query_params": {
+        "search": "(optional)",
+        "product_id": "(optional)",
+        "per_page": "(optional, default: 15)"
+    },
+    "auth_required": false
+}

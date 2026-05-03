@@ -1,0 +1,46 @@
+{
+    "message": "Order status updated successfully.",
+    "data": {
+        "id": 1,
+        "order_number": "ORD-20260428-PA8JIL",
+        "customer_name": "محمد سعادات",
+        "customer_phone": "0958389235",
+        "customer_address": "دمشق ابو رمانة جانب بنك الاردن",
+        "city": "دمشق",
+        "notes": null,
+        "status": "shipped",
+        "subtotal": "60.00",
+        "shipping_fee": "10.00",
+        "total": "70.00",
+        "placed_at": "2026-04-28 12:38:58",
+        "items_count": 1,
+        "items": [
+            {
+                "id": 1,
+                "product": {
+                    "id": 1,
+                    "name": "p1",
+                    "slug": "p1"
+                },
+                "variant": {
+                    "id": 2,
+                    "sku": "v12",
+                    "color_name": "cream",
+                    "size_name": "3-6m",
+                    "age_label": "0-3 months"
+                },
+                "product_id": 1,
+                "variant_id": 2,
+                "product_name_snapshot": "p1",
+                "variant_snapshot": "cream \/ 3-6m \/ 0-3 months",
+                "sku_snapshot": "v12",
+                "unit_price": "20.00",
+                "quantity": 3,
+                "line_total": "60.00",
+                "created_at": "2026-04-28 12:38:58"
+            }
+        ],
+        "created_at": "2026-04-28 12:38:58",
+        "updated_at": "2026-04-28 13:30:33"
+    }
+}

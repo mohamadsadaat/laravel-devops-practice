@@ -1,0 +1,12 @@
+{
+    "method": "GET",
+    "url": "\/api\/admin\/orders",
+    "headers": {
+        "Authorization": "Bearer {token}",
+        "Accept": "application\/json"
+    },
+    "query_params": {
+        "status": "cancelled"
+    },
+    "auth_required": true
+}

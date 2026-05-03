@@ -1,0 +1,158 @@
+{
+    "summary": {
+        "total_revenue": 8000,
+        "total_quantity": 16,
+        "total_orders": 4,
+        "total_products_sold": 4,
+        "average_order_value": 2000,
+        "average_item_price": 500
+    },
+    "products": [
+        {
+            "product_id": 1,
+            "product_name": "child tshirt",
+            "product_sku": "child-1",
+            "total_quantity": 2,
+            "total_revenue": 1000,
+            "items": [
+                {
+                    "order_id": 1,
+                    "variant_id": 1,
+                    "variant_sku": "child-1",
+                    "variant_name": "blue\/12-18m",
+                    "quantity": 2,
+                    "unit_price": "500.00",
+                    "total_price": 1000,
+                    "order_status": "pending",
+                    "created_at": "2026-04-29T11:33:41.000000Z"
+                }
+            ]
+        },
+        {
+            "product_id": 4,
+            "product_name": "child tshirt",
+            "product_sku": "rr-0866",
+            "total_quantity": 4,
+            "total_revenue": 2000,
+            "items": [
+                {
+                    "order_id": 1,
+                    "variant_id": 9,
+                    "variant_sku": "rr-0866",
+                    "variant_name": "moon\/0-3m",
+                    "quantity": 2,
+                    "unit_price": "500.00",
+                    "total_price": 1000,
+                    "order_status": "pending",
+                    "created_at": "2026-04-29T11:33:41.000000Z"
+                },
+                {
+                    "order_id": 4,
+                    "variant_id": 10,
+                    "variant_sku": "ur-555",
+                    "variant_name": "pink\/6-12m",
+                    "quantity": 1,
+                    "unit_price": "500.00",
+                    "total_price": 500,
+                    "order_status": "pending",
+                    "created_at": "2026-04-29T11:50:31.000000Z"
+                },
+                {
+                    "order_id": 4,
+                    "variant_id": 9,
+                    "variant_sku": "rr-0866",
+                    "variant_name": "moon\/0-3m",
+                    "quantity": 1,
+                    "unit_price": "500.00",
+                    "total_price": 500,
+                    "order_status": "pending",
+                    "created_at": "2026-04-29T11:50:31.000000Z"
+                }
+            ]
+        },
+        {
+            "product_id": 2,
+            "product_name": "man shirt",
+            "product_sku": "mm-98",
+            "total_quantity": 5,
+            "total_revenue": 2500,
+            "items": [
+                {
+                    "order_id": 2,
+                    "variant_id": 3,
+                    "variant_sku": "mm-98",
+                    "variant_name": "gray\/0-3m",
+                    "quantity": 2,
+                    "unit_price": "500.00",
+                    "total_price": 1000,
+                    "order_status": "shipped",
+                    "created_at": "2026-04-29T11:35:17.000000Z"
+                },
+                {
+                    "order_id": 2,
+                    "variant_id": 4,
+                    "variant_sku": "mm-89",
+                    "variant_name": "black\/6-12m",
+                    "quantity": 2,
+                    "unit_price": "500.00",
+                    "total_price": 1000,
+                    "order_status": "shipped",
+                    "created_at": "2026-04-29T11:35:17.000000Z"
+                },
+                {
+                    "order_id": 4,
+                    "variant_id": 3,
+                    "variant_sku": "mm-98",
+                    "variant_name": "gray\/0-3m",
+                    "quantity": 1,
+                    "unit_price": "500.00",
+                    "total_price": 500,
+                    "order_status": "pending",
+                    "created_at": "2026-04-29T11:50:31.000000Z"
+                }
+            ]
+        },
+        {
+            "product_id": 3,
+            "product_name": "woman shirt",
+            "product_sku": "wo-8",
+            "total_quantity": 5,
+            "total_revenue": 2500,
+            "items": [
+                {
+                    "order_id": 3,
+                    "variant_id": 6,
+                    "variant_sku": "wo-8",
+                    "variant_name": "lavender\/12-18m",
+                    "quantity": 2,
+                    "unit_price": "500.00",
+                    "total_price": 1000,
+                    "order_status": "delivered",
+                    "created_at": "2026-04-29T11:36:32.000000Z"
+                },
+                {
+                    "order_id": 3,
+                    "variant_id": 5,
+                    "variant_sku": "wo-9",
+                    "variant_name": "rose\/3-6m",
+                    "quantity": 2,
+                    "unit_price": "500.00",
+                    "total_price": 1000,
+                    "order_status": "delivered",
+                    "created_at": "2026-04-29T11:36:32.000000Z"
+                },
+                {
+                    "order_id": 4,
+                    "variant_id": 5,
+                    "variant_sku": "wo-9",
+                    "variant_name": "rose\/3-6m",
+                    "quantity": 1,
+                    "unit_price": "500.00",
+                    "total_price": 500,
+                    "order_status": "pending",
+                    "created_at": "2026-04-29T11:50:31.000000Z"
+                }
+            ]
+        }
+    ]
+}

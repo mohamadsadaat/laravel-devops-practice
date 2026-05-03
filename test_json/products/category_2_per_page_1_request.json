@@ -1,0 +1,12 @@
+{
+    "method": "GET",
+    "url": "\/api\/admin\/products",
+    "headers": {
+        "Authorization": "Bearer {token}",
+        "Accept": "application\/json"
+    },
+    "query_params": {
+        "category_id": 2,
+        "per_page": 1
+    }
+}

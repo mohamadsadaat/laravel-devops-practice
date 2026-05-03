@@ -1,0 +1,16 @@
+{
+    "total_orders": 4,
+    "active_orders_calculated": 3,
+    "delivered_orders_calculated": 1,
+    "cancelled_orders_calculated": 0,
+    "status_breakdown": {
+        "pending": 2,
+        "confirmed": 1,
+        "delivered": 1
+    },
+    "sum_check": {
+        "active_plus_delivered_plus_cancelled": 4,
+        "total_orders": 4,
+        "matches": true
+    }
+}

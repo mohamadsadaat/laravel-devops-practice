@@ -1,0 +1,18 @@
+{
+    "message": "Inventory updated successfully.",
+    "data": {
+        "id": 17,
+        "product_id": 1,
+        "sku": "P1-M-1777386984740",
+        "color_name": "Red",
+        "size_name": "M",
+        "age_label": "4-6 years",
+        "price": "15.00",
+        "quantity_on_hand": 60,
+        "quantity_reserved": 0,
+        "available_quantity": 60,
+        "is_active": true,
+        "created_at": "2026-04-28T14:36:24.000000Z",
+        "updated_at": "2026-04-29T07:22:23.000000Z"
+    }
+}

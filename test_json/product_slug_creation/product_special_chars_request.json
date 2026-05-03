@@ -1,0 +1,19 @@
+{
+    "method": "POST",
+    "url": "\/api\/admin\/products",
+    "headers": {
+        "Authorization": "Bearer {token}",
+        "Accept": "application\/json",
+        "Content-Type": "application\/json"
+    },
+    "body": {
+        "name": "Red Dress @ Best Price #1 (New Collection!)",
+        "category_id": 1,
+        "base_price": 45.99,
+        "brand": "FashionBrand",
+        "gender": "girl",
+        "status": "active",
+        "description": "Beautiful red dress with special characters in name."
+    },
+    "auth_required": true
+}

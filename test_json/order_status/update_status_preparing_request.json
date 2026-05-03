@@ -1,0 +1,12 @@
+{
+    "method": "PATCH",
+    "url": "\/api\/admin\/orders\/1\/status",
+    "headers": {
+        "Authorization": "Bearer {token}",
+        "Accept": "application\/json",
+        "Content-Type": "application\/json"
+    },
+    "body": {
+        "status": "preparing"
+    }
+}
