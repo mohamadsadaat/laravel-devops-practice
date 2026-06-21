@@ -9,7 +9,6 @@ class ProductService
 {
     public function paginate(
         ?string $search = null,
-        ?string $status = null,
         ?int $categoryId = null,
         ?string $gender = null,
         int $perPage = 15
@@ -19,8 +18,14 @@ class ProductService
             ->with(['images' => function($query) {
                 $query->orderBy('is_primary', 'desc')->orderBy('sort_order', 'asc');
             }])
-            ->withCount(['variants', 'images'])
-            ->when($search, function ($query, $search) {
+            ->withCount([
+                'variants as variants_count' => fn ($query) => $this->availableVariants($query),
+                'images',
+            ])
+            ->where('status', 'active')
+            ->whereHas('category', fn ($query) => $query->where('is_active', true))
+            ->whereHas('variants', fn ($query) => $this->availableVariants($query))
+                        ->when($search, function ($query, $search) {
                 $query->where(function ($innerQuery) use ($search) {
                     $innerQuery
                         ->where('name', 'like', "%{$search}%")
@@ -28,7 +33,6 @@ class ProductService
                         ->orWhere('brand', 'like', "%{$search}%");
                 });
             })
-            ->when($status, fn ($query, $status) => $query->where('status', $status))
             ->when($categoryId, fn ($query, $categoryId) => $query->where('category_id', $categoryId))
             ->when($gender, fn ($query, $gender) => $query->where('gender', $gender))
             ->latest('id')
@@ -99,6 +103,13 @@ class ProductService
                 $query->orderBy('is_primary', 'desc')->orderBy('sort_order', 'asc');
             }])
             ->loadCount(['variants', 'images']);
+    }
+
+    private function availableVariants($query)
+    {
+        return $query
+            ->where('is_active', true)
+            ->whereColumn('quantity_on_hand', '>', 'quantity_reserved');
     }
 
     private function makeUniqueSlug(string $value, ?int $ignoreId = null): string

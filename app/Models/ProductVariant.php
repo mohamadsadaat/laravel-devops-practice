@@ -11,19 +11,13 @@ class ProductVariant extends Model
    protected $fillable = [
         'product_id',
         'sku',
-        'color_name',
-        'size_name',
         'age_label',
-        'price',
-        'compare_price',
         'quantity_on_hand',
         'quantity_reserved',
         'is_active',
     ];
 
     protected $casts = [
-        'price' => 'decimal:2',
-        'compare_price' => 'decimal:2',
         'is_active' => 'boolean',
     ];
 
@@ -39,11 +33,6 @@ class ProductVariant extends Model
     public function product(): BelongsTo
     {
         return $this->belongsTo(Product::class);
-    }
-
-    public function images(): HasMany
-    {
-        return $this->hasMany(ProductImage::class, 'variant_id');
     }
 
     public function stockMovements(): HasMany

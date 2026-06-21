@@ -31,7 +31,7 @@ class UpdateProductRequest extends FormRequest
         $product = $this->route('product');
 
         return [
-            'category_id' => ['sometimes', 'required', 'integer', 'exists:categories,id'],
+            'category_id' => ['sometimes', 'required', 'integer', Rule::exists('categories', 'id')->where('is_active', true)],
             'name' => ['sometimes', 'required', 'string', 'max:255'],
             'slug' => [
                 'sometimes',

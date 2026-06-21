@@ -21,7 +21,10 @@ class OrderSeeder extends Seeder
         // Get available variants
         $variants = ProductVariant::with('product')
             ->where('is_active', true)
-            ->whereHas('product', fn($q) => $q->where('status', 'active'))
+            ->whereColumn('quantity_on_hand', '>', 'quantity_reserved')
+            ->whereHas('product', fn($q) => $q
+                ->where('status', 'active')
+                ->whereHas('category', fn ($categoryQuery) => $categoryQuery->where('is_active', true)))
             ->get();
 
         if ($variants->isEmpty()) {
@@ -43,7 +46,7 @@ class OrderSeeder extends Seeder
 
                 foreach ($selectedVariants as $variant) {
                     $quantity = $faker->numberBetween(1, 3);
-                    $unitPrice = (float) $variant->price;
+                    $unitPrice = (float) $variant->product->base_price;
                     $lineTotal = round($unitPrice * $quantity, 2);
                     $subtotal += $lineTotal;
 
@@ -51,11 +54,7 @@ class OrderSeeder extends Seeder
                         'product_id' => $variant->product_id,
                         'variant_id' => $variant->id,
                         'product_name_snapshot' => $variant->product->name,
-                        'variant_snapshot' => implode(' / ', array_filter([
-                            $variant->color_name,
-                            $variant->size_name,
-                            $variant->age_label,
-                        ])),
+                        'variant_snapshot' => $variant->age_label,
                         'sku_snapshot' => $variant->sku,
                         'unit_price' => $unitPrice,
                         'quantity' => $quantity,

@@ -1,0 +1,41 @@
+name: Laravel Automatic Testing
+
+# متى يعمل هذا المسار؟
+on:
+  push:
+    branches: [ "main", "master" ]
+  pull_request:
+    branches: [ "main", "master" ]
+
+# ما هي المهام التي سينفذها؟
+jobs:
+  test-php-code:
+    # نظام التشغيل الوهمي الذي سيعمل عليه الكود
+    runs-on: ubuntu-latest
+
+    steps:
+    # 1. سحب الكود من المستودع الخاص بك
+    - name: Checkout Code
+      uses: actions/checkout@v3
+
+    # 2. تثبيت لغة PHP على الخادم الوهمي
+    - name: Setup PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '8.2' # يمكنك تغييرها لتطابق إصدار مشروعك
+
+    # 3. إنشاء ملف إعدادات البيئة
+    - name: Copy .env
+      run: php -r "file_exists('.env') || copy('.env.example', '.env');"
+
+    # 4. تثبيت الحزم ومكتبات المشروع
+    - name: Install Dependencies
+      run: composer install --no-interaction --prefer-dist --optimize-autoloader
+
+    # 5. توليد مفتاح حماية لارافل
+    - name: Generate App Key
+      run: php artisan key:generate
+
+    # 6. تشغيل الاختبارات للتأكد من سلامة الكود
+    - name: Run Tests (PHPUnit / Pest)
+      run: php artisan test

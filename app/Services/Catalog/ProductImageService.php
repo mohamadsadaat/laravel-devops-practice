@@ -16,6 +16,7 @@ class ProductImageService
         }
         
         unset($data['image']);
+        unset($data['variant_id']);
         
         $data['product_id'] = $product->id;
         $data['sort_order'] = $data['sort_order'] ?? 0;

@@ -12,7 +12,14 @@ class CategoryService
     public function paginate(?string $search = null, int $perPage = 15)
     {
         return Category::query()
-            ->withCount('products')
+            ->where('is_active', true)
+            ->withCount([
+                'products' => fn ($query) => $query
+                    ->where('status', 'active')
+                    ->whereHas('variants', fn ($variantQuery) => $variantQuery
+                        ->where('is_active', true)
+                        ->whereColumn('quantity_on_hand', '>', 'quantity_reserved')),
+            ])
             ->when($search, function ($query, $search) {
                 $query->where(function ($innerQuery) use ($search) {
                     $innerQuery

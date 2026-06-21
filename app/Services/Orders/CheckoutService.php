@@ -2,6 +2,7 @@
 
 namespace App\Services\Orders;
 
+use App\Exceptions\InsufficientStockException;
 use App\Models\Order;
 use App\Models\ProductVariant;
 use App\Services\Catalog\InventoryService;
@@ -22,38 +23,53 @@ class CheckoutService
         return DB::transaction(function () use ($data) {
             $items = collect($data['items']);
 
-            $variantIds = $items->pluck('variant_id')->unique()->values();
+            $productIds = $items->pluck('product_id')->unique()->values();
+            $ageLabels = $items->pluck('age_label')->unique()->values();
 
             $variants = ProductVariant::query()
-                ->with(['product:id,name,slug,status'])
-                ->whereIn('id', $variantIds)
+                ->with(['product.category:id,is_active', 'product:id,name,slug,status,base_price,category_id'])
+                ->whereIn('product_id', $productIds)
+                ->whereIn('age_label', $ageLabels)
                 ->lockForUpdate()
                 ->get()
-                ->keyBy('id');
-
-            if ($variants->count() !== $variantIds->count()) {
-                throw new RuntimeException('One or more selected variants were not found.');
-            }
+                ->keyBy(fn (ProductVariant $variant) => $this->variantLookupKey($variant->product_id, $variant->age_label));
 
             $shippingFee = (float) ($data['shipping_fee'] ?? 0);
             $subtotal = 0;
 
             foreach ($items as $item) {
-                $variant = $variants->get((int) $item['variant_id']);
+                $variant = $variants->get($this->variantLookupKey((int) $item['product_id'], (string) $item['age_label']));
 
                 if (!$variant) {
-                    throw new RuntimeException('Variant not found.');
+                    throw new RuntimeException('Selected age is not available for this product.');
                 }
 
                 if (!$variant->is_active) {
-                    throw new RuntimeException("Variant {$variant->sku} is not active.");
+                    throw new RuntimeException("Selected age {$variant->age_label} is not active.");
                 }
 
-                if (!$variant->product || $variant->product->status !== 'active') {
-                    throw new RuntimeException("Product for variant {$variant->sku} is not active.");
+                if (
+                    !$variant->product
+                    || $variant->product->status !== 'active'
+                    || !$variant->product->category
+                    || !$variant->product->category->is_active
+                ) {
+                    throw new RuntimeException('Selected product is not active.');
                 }
 
-                $subtotal += round(((float) $variant->price * (int) $item['quantity']), 2);
+                if ($variant->available_quantity < (int) $item['quantity']) {
+                    throw new InsufficientStockException(
+                        $variant->age_label,
+                        (int) $item['quantity'],
+                        $variant->available_quantity
+                    );
+                }
+
+                if (is_null($variant->product->base_price)) {
+                    throw new RuntimeException('Selected product does not have a price.');
+                }
+
+                $subtotal += round(((float) $variant->product->base_price * (int) $item['quantity']), 2);
             }
 
             $total = round($subtotal + $shippingFee, 2);
@@ -73,23 +89,17 @@ class CheckoutService
             ]);
 
             foreach ($items as $item) {
-                $variant = $variants->get((int) $item['variant_id']);
+                $variant = $variants->get($this->variantLookupKey((int) $item['product_id'], (string) $item['age_label']));
                 $quantity = (int) $item['quantity'];
 
-                $variantSnapshot = implode(' / ', [
-                    $variant->color_name,
-                    $variant->size_name,
-                    $variant->age_label,
-                ]);
-
-                $unitPrice = (float) $variant->price;
+                $unitPrice = (float) $variant->product->base_price;
                 $lineTotal = round($unitPrice * $quantity, 2);
 
                 $order->items()->create([
                     'product_id' => $variant->product_id,
                     'variant_id' => $variant->id,
                     'product_name_snapshot' => $variant->product->name,
-                    'variant_snapshot' => $variantSnapshot,
+                    'variant_snapshot' => $variant->age_label,
                     'sku_snapshot' => $variant->sku,
                     'unit_price' => $unitPrice,
                     'quantity' => $quantity,
@@ -108,9 +118,14 @@ class CheckoutService
 
             return $order->load([
                 'items.product:id,name,slug',
-                'items.variant:id,product_id,sku,color_name,size_name,age_label',
+                'items.variant:id,product_id,age_label',
             ])->loadCount('items');
         }, 5);
+    }
+
+    private function variantLookupKey(int $productId, string $ageLabel): string
+    {
+        return $productId . '|' . mb_strtolower(trim($ageLabel));
     }
 
     private function generateOrderNumber(): string

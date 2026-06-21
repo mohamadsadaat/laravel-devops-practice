@@ -23,9 +23,6 @@ class ProductVariantController extends Controller
     {
         $variants = $this->productVariantService->paginateAll(
             search: $request->string('search')->toString(),
-            isActive: $request->filled('is_active')
-                ? $request->boolean('is_active')
-                : null,
             perPage: (int) $request->integer('per_page', 15),
         );
 
@@ -57,8 +54,18 @@ class ProductVariantController extends Controller
     {
         $this->productVariantService->ensureBelongsToProduct($product, $variant);
 
-        $variant->load(['product:id,name,slug'])
-            ->loadCount(['images', 'stockMovements']);
+        $variant->load(['product.category:id,is_active', 'product:id,name,slug,base_price,status,category_id']);
+
+        abort_unless(
+            $variant->is_active
+                && $variant->available_quantity > 0
+                && $variant->product?->status === 'active'
+                && (bool) $variant->product?->category?->is_active,
+            404
+        );
+
+        $variant->load(['product:id,name,slug,base_price,status,category_id'])
+            ->loadCount(['stockMovements']);
 
         return response()->json([
             'data' => new ProductVariantResource($variant),

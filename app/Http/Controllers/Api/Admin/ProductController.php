@@ -10,6 +10,7 @@ use App\Models\Product;
 use App\Services\Catalog\ProductService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
@@ -22,7 +23,6 @@ class ProductController extends Controller
     {
         $products = $this->productService->paginate(
             search: $request->string('search')->toString(),
-            status: $request->string('status')->toString() ?: null,
             categoryId: $request->filled('category_id') ? (int) $request->category_id : null,
             gender: $request->string('gender')->toString() ?: null,
             perPage: (int) $request->integer('per_page', 15),
@@ -43,11 +43,24 @@ class ProductController extends Controller
 
     public function show(Product $product): JsonResponse
     {
-        $product->load(['category:id,name,slug'])
-            ->load(['images' => function($query) {
+        $product = Product::query()
+            ->whereKey($product->id)
+            ->where('status', 'active')
+            ->whereHas('category', fn ($query) => $query->where('is_active', true))
+            ->whereHas('variants', fn ($query) => $query
+                ->where('is_active', true)
+                ->whereColumn('quantity_on_hand', '>', 'quantity_reserved'))
+            ->with(['category:id,name,slug'])
+            ->with(['images' => function ($query) {
                 $query->orderBy('is_primary', 'desc')->orderBy('sort_order', 'asc');
             }])
-            ->loadCount(['variants', 'images']);
+            ->withCount([
+                'variants as variants_count' => fn ($query) => $query
+                    ->where('is_active', true)
+                    ->whereColumn('quantity_on_hand', '>', 'quantity_reserved'),
+                'images',
+            ])
+            ->firstOrFail();
 
         return response()->json([
             'data' => new ProductResource($product),
@@ -85,56 +98,68 @@ class ProductController extends Controller
 
     public function withVariants($productId): JsonResponse
     {
-        $product = \App\Models\Product::with([
-            'variants' => function($query) {
-                $query->where('is_active', true)
-                      ->with(['images' => function($imageQuery) {
-                          $imageQuery->orderBy('is_primary', 'desc')
-                                    ->orderBy('sort_order', 'asc');
-                      }]);
-            },
-            'images' => function($query) {
-                $query->whereNull('variant_id')
-                      ->orderBy('is_primary', 'desc')
-                      ->orderBy('sort_order', 'asc');
-            }
-        ])->findOrFail($productId);
+        $product = Product::query()
+            ->whereKey($productId)
+            ->where('status', 'active')
+            ->whereHas('category', fn ($query) => $query->where('is_active', true))
+            ->whereHas('variants', fn ($query) => $query
+                ->where('is_active', true)
+                ->whereColumn('quantity_on_hand', '>', 'quantity_reserved'))
+            ->with([
+                'category:id,name,slug',
+                'variants' => function ($query) {
+                    $query->where('is_active', true)
+                        ->whereColumn('quantity_on_hand', '>', 'quantity_reserved')
+                        ->orderBy('age_label');
+                },
+                'images' => function ($query) {
+                    $query->orderBy('is_primary', 'desc')
+                        ->orderBy('sort_order', 'asc');
+                },
+            ])
+            ->firstOrFail();
 
         return response()->json([
             'product' => [
                 'id' => $product->id,
                 'name' => $product->name,
-                'variants' => $product->variants->map(function($variant) {
-                    $primaryImage = $variant->images->where('is_primary', true)->first()
-                        ?? $variant->images->first();
-                    
+                'slug' => $product->slug,
+                'base_price' => !is_null($product->base_price) ? (float) $product->base_price : null,
+                'category' => [
+                    'id' => $product->category?->id,
+                    'name' => $product->category?->name,
+                    'slug' => $product->category?->slug,
+                ],
+                'primary_image_url' => $this->primaryImageUrl($product),
+                'images' => $product->images->map(function ($image) {
+                    return [
+                        'id' => $image->id,
+                        'path' => $image->path,
+                        'url' => Storage::disk('public')->url($image->path),
+                        'alt_text' => $image->alt_text,
+                        'sort_order' => $image->sort_order,
+                        'is_primary' => (bool) $image->is_primary,
+                    ];
+                }),
+                'variants' => $product->variants->map(function ($variant) {
                     return [
                         'id' => $variant->id,
                         'product_id' => $variant->product_id,
-                        'sku' => $variant->sku,
-                        'color_name' => $variant->color_name,
-                        'size_name' => $variant->size_name,
                         'age_label' => $variant->age_label,
-                        'price' => (float) $variant->price,
-                        'compare_price' => $variant->compare_price ? (float) $variant->compare_price : null,
                         'quantity_on_hand' => (int) $variant->quantity_on_hand,
-                        'quantity_reserved' => (int) $variant->quantity_reserved,
-                        'available_quantity' => (int) ($variant->quantity_on_hand - $variant->quantity_reserved),
+                        'available_quantity' => (int) $variant->available_quantity,
                         'is_active' => (bool) $variant->is_active,
-                        'image' => $primaryImage ? \Storage::disk('public')->url($primaryImage->path) : null,
-                        'images' => $variant->images->map(function($image) {
-                            return [
-                                'id' => $image->id,
-                                'path' => $image->path,
-                                'url' => \Storage::disk('public')->url($image->path),
-                                'alt_text' => $image->alt_text,
-                                'sort_order' => $image->sort_order,
-                                'is_primary' => (bool) $image->is_primary,
-                            ];
-                        }),
                     ];
-                })
-            ]
+                }),
+            ],
         ]);
+    }
+
+    private function primaryImageUrl(Product $product): ?string
+    {
+        $primaryImage = $product->images->where('is_primary', true)->first()
+            ?? $product->images->first();
+
+        return $primaryImage ? Storage::disk('public')->url($primaryImage->path) : null;
     }
 }

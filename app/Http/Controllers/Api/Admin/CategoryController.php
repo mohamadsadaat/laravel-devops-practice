@@ -41,7 +41,15 @@ class CategoryController extends Controller
 
     public function show(Category $category): JsonResponse
     {
-        $category->loadCount('products');
+        abort_unless($category->is_active, 404);
+
+        $category->loadCount([
+            'products' => fn ($query) => $query
+                ->where('status', 'active')
+                ->whereHas('variants', fn ($variantQuery) => $variantQuery
+                    ->where('is_active', true)
+                    ->whereColumn('quantity_on_hand', '>', 'quantity_reserved')),
+        ]);
 
         return response()->json([
             'data' => new CategoryResource($category),

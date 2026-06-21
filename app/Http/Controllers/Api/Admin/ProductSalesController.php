@@ -12,8 +12,16 @@ class ProductSalesController extends Controller
     public function index(): JsonResponse
     {
         // Get all products with their variants
-        $products = Product::with(['variants'])
+        $products = Product::with([
+            'variants' => fn ($query) => $query
+                ->where('is_active', true)
+                ->whereColumn('quantity_on_hand', '>', 'quantity_reserved'),
+        ])
             ->where('status', 'active')
+            ->whereHas('category', fn ($query) => $query->where('is_active', true))
+            ->whereHas('variants', fn ($query) => $query
+                ->where('is_active', true)
+                ->whereColumn('quantity_on_hand', '>', 'quantity_reserved'))
             ->get()
             ->map(function ($product) {
                 // Get total sold for each variant
@@ -23,13 +31,8 @@ class ProductSalesController extends Controller
                     
                     return [
                         'id' => $variant->id,
-                        'sku' => $variant->sku,
-                        'color_name' => $variant->color_name,
-                        'size_name' => $variant->size_name,
                         'age_label' => $variant->age_label,
-                        'price' => $variant->price,
                         'quantity_on_hand' => $variant->quantity_on_hand,
-                        'quantity_reserved' => $variant->quantity_reserved,
                         'available_quantity' => $variant->quantity_on_hand - $variant->quantity_reserved,
                         'total_sold' => (int) $totalSold,
                     ];

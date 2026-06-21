@@ -2,9 +2,7 @@
 
 namespace App\Http\Requests\Admin;
 
-use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
 
 class StoreProductImageRequest extends FormRequest
 {
@@ -17,8 +15,7 @@ class StoreProductImageRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'image' => ['required', 'image', 'mimes:jpg,jpeg,png,webp', 'max:5120'],
-            'variant_id' => ['nullable', 'integer', 'exists:product_variants,id'],
+            'image' => ['required', 'image', 'mimes:jpg,jpeg,png,webp', 'max:20000'],
             'alt_text' => ['nullable', 'string', 'max:255'],
             'sort_order' => ['nullable', 'integer', 'min:0'],
             'is_primary' => ['nullable', 'boolean'],

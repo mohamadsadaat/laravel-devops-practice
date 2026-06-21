@@ -24,9 +24,6 @@ class OrderItemResource extends JsonResource
                 return $this->variant
                     ? [
                         'id' => $this->variant->id,
-                        'sku' => $this->variant->sku,
-                        'color_name' => $this->variant->color_name,
-                        'size_name' => $this->variant->size_name,
                         'age_label' => $this->variant->age_label,
                     ]
                     : null;
@@ -35,8 +32,7 @@ class OrderItemResource extends JsonResource
             'product_id' => $this->product_id,
             'variant_id' => $this->variant_id,
             'product_name_snapshot' => $this->product_name_snapshot,
-            'variant_snapshot' => $this->variant_snapshot,
-            'sku_snapshot' => $this->sku_snapshot,
+            'age_label_snapshot' => $this->variant_snapshot,
             'unit_price' => $this->unit_price,
             'quantity' => (int) $this->quantity,
             'line_total' => $this->line_total,

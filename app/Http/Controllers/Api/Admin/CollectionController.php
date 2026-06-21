@@ -16,8 +16,8 @@ class CollectionController extends Controller
     public function index(Request $request)
     {
         $collections = Collection::query()
-            ->when($request->boolean('active'), fn($query) => $query->where('is_active', true))
-            ->when($request->filled('search'), fn($query) => $query->where('name', 'like', "%{$request->search}%"))
+            ->where('is_active', true)
+            ->when($request->filled('search'), fn ($query) => $query->where('name', 'like', "%{$request->search}%"))
             ->orderBy('sort_order')
             ->orderBy('name')
             ->paginate($request->integer('per_page', 15));
@@ -63,7 +63,16 @@ class CollectionController extends Controller
 
     public function show(Collection $collection): JsonResponse
     {
-        $collection->loadCount(['products']);
+        abort_unless($collection->is_active, 404);
+
+        $collection->loadCount([
+            'products' => fn ($query) => $query
+                ->where('status', 'active')
+                ->whereHas('category', fn ($categoryQuery) => $categoryQuery->where('is_active', true))
+                ->whereHas('variants', fn ($variantQuery) => $variantQuery
+                    ->where('is_active', true)
+                    ->whereColumn('quantity_on_hand', '>', 'quantity_reserved')),
+        ]);
 
         return response()->json([
             'data' => new CollectionResource($collection),
@@ -72,15 +81,27 @@ class CollectionController extends Controller
 
     public function showWithProducts(Collection $collection): JsonResponse
     {
+        abort_unless($collection->is_active, 404);
+
         $collection->load([
-            'products' => function($query) {
+            'products' => function ($query) {
                 $query->select(['id', 'name', 'slug', 'category_id', 'brand', 'gender', 'base_price', 'status', 'is_featured'])
-                      ->with(['category:id,name,slug'])
-                      ->with(['images' => function($imageQuery) {
-                          $imageQuery->orderBy('is_primary', 'desc')->orderBy('sort_order', 'asc')->limit(3);
-                      }])
-                      ->withCount(['variants', 'images']);
-            }
+                    ->where('status', 'active')
+                    ->whereHas('category', fn ($categoryQuery) => $categoryQuery->where('is_active', true))
+                    ->whereHas('variants', fn ($variantQuery) => $variantQuery
+                        ->where('is_active', true)
+                        ->whereColumn('quantity_on_hand', '>', 'quantity_reserved'))
+                    ->with(['category:id,name,slug'])
+                    ->with(['images' => function ($imageQuery) {
+                        $imageQuery->orderBy('is_primary', 'desc')->orderBy('sort_order', 'asc')->limit(3);
+                    }])
+                    ->withCount([
+                        'variants as variants_count' => fn ($variantQuery) => $variantQuery
+                            ->where('is_active', true)
+                            ->whereColumn('quantity_on_hand', '>', 'quantity_reserved'),
+                        'images',
+                    ]);
+            },
         ]);
 
         return response()->json([
@@ -106,8 +127,8 @@ class CollectionController extends Controller
         // Handle file upload
         if ($request->hasFile('image')) {
             // Delete old image if exists
-            if ($collection->image_path && \Storage::disk('public')->exists($collection->image_path)) {
-                \Storage::disk('public')->delete($collection->image_path);
+            if ($collection->image_path && Storage::disk('public')->exists($collection->image_path)) {
+                Storage::disk('public')->delete($collection->image_path);
             }
             $imagePath = $request->file('image')->store('collections', 'public');
             $validated['image_path'] = $imagePath;

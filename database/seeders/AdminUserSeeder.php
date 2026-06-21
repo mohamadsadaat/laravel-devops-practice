@@ -35,9 +35,18 @@ class AdminUserSeeder extends Seeder
                 'is_active' => true,
             ]
         );
+        User::updateOrCreate(
+       ['email' => 'ali@baby.com'],
+       [
+           'name' => 'ali',
+           'email' => 'ali@baby.com',
+           'password' => Hash::make('333111'),
+           'role' => 'admin',
+           'is_active' => true,
+       ]);
 
-        $this->command->info('Users created successfully!');
-        $this->command->info('Admin - Email: saadat@kidsstore.com, Password: 389235');
-        $this->command->info('Staff - Email: ahmad@kidsstore.com, Password: 123456');
+        // $this->command->info('Users created successfully!');
+        // $this->command->info('Admin - Email: saadat@kidsstore.com, Password: 389235');
+        // $this->command->info('Staff - Email: ahmad@kidsstore.com, Password: 123456');
     }
 }

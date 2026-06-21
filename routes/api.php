@@ -8,6 +8,7 @@ use App\Http\Controllers\Api\Admin\ProductController;
 use App\Http\Controllers\Api\Admin\ProductImageController;
 use App\Http\Controllers\Api\Admin\ProductSalesController;
 use App\Http\Controllers\Api\Admin\ProductVariantController;
+use App\Http\Controllers\Api\Admin\SalesRevenueController;
 use App\Http\Controllers\Api\Storefront\CheckoutController;
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
@@ -79,5 +80,15 @@ Route::prefix('admin')
         Route::get('orders/active-count', [OrderController::class, 'activeCount']);
         Route::get('orders/{order}', [OrderController::class, 'show']);
         Route::patch('orders/{order}/status', [OrderController::class, 'updateStatus']);
+        
+        // Sales Revenue - all operations
+        Route::get('sales/revenue', [SalesRevenueController::class, 'index']);
+        Route::get('sales/revenue/by-date-range', [SalesRevenueController::class, 'byDateRange']);
+        Route::get('sales/revenue/monthly', [SalesRevenueController::class, 'monthly']);
 
     });
+
+// Public sales revenue routes for testing
+Route::get('admin/sales/revenue', [SalesRevenueController::class, 'index']);
+Route::get('admin/sales/revenue/by-date-range', [SalesRevenueController::class, 'byDateRange']);
+Route::get('admin/sales/revenue/monthly', [SalesRevenueController::class, 'monthly']);

@@ -5,28 +5,27 @@ namespace App\Services\Catalog;
 use App\Models\Product;
 use App\Models\ProductVariant;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
-use Illuminate\Support\Str;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class ProductVariantService
 {
     public function paginateAll(
         ?string $search = null,
-        ?bool $isActive = null,
         int $perPage = 15
     ): LengthAwarePaginator {
         return ProductVariant::query()
-            ->with(['product:id,name,slug'])
-            ->withCount(['images', 'stockMovements'])
-            ->when(!is_null($isActive), function ($query) use ($isActive) {
-                $query->where('is_active', $isActive);
+            ->with(['product:id,name,slug,base_price,status,category_id'])
+            ->withCount(['stockMovements'])
+            ->where('is_active', true)
+            ->whereColumn('quantity_on_hand', '>', 'quantity_reserved')
+            ->whereHas('product', function ($query) {
+                $query->where('status', 'active')
+                    ->whereHas('category', fn ($categoryQuery) => $categoryQuery->where('is_active', true));
             })
             ->when($search, function ($query, $search) {
                 $query->where(function ($innerQuery) use ($search) {
                     $innerQuery
                         ->where('sku', 'like', "%{$search}%")
-                        ->orWhere('color_name', 'like', "%{$search}%")
-                        ->orWhere('size_name', 'like', "%{$search}%")
                         ->orWhere('age_label', 'like', "%{$search}%")
                         ->orWhereHas('product', function ($productQuery) use ($search) {
                             $productQuery->where('name', 'like', "%{$search}%");
@@ -44,14 +43,18 @@ class ProductVariantService
     ): LengthAwarePaginator {
         return ProductVariant::query()
             ->where('product_id', $product->id)
-            ->with(['product:id,name,slug'])
-            ->withCount(['images', 'stockMovements'])
+            ->where('is_active', true)
+            ->whereColumn('quantity_on_hand', '>', 'quantity_reserved')
+            ->whereHas('product', function ($query) {
+                $query->where('status', 'active')
+                    ->whereHas('category', fn ($categoryQuery) => $categoryQuery->where('is_active', true));
+            })
+            ->with(['product:id,name,slug,base_price,status,category_id'])
+            ->withCount(['stockMovements'])
             ->when($search, function ($query, $search) {
                 $query->where(function ($innerQuery) use ($search) {
                     $innerQuery
                         ->where('sku', 'like', "%{$search}%")
-                        ->orWhere('color_name', 'like', "%{$search}%")
-                        ->orWhere('size_name', 'like', "%{$search}%")
                         ->orWhere('age_label', 'like', "%{$search}%");
                 });
             })
@@ -66,28 +69,26 @@ class ProductVariantService
         $data['quantity_reserved'] = $data['quantity_reserved'] ?? 0;
         $data['is_active'] = $data['is_active'] ?? true;
 
-        // Generate SKU if not provided
-        if (!isset($data['sku']) || empty($data['sku'])) {
-            $data['sku'] = $this->generateUniqueSku($product, $data);
-        } else {
-            // Ensure provided SKU is unique
-            $data['sku'] = $this->makeUniqueSku($data['sku']);
-        }
+        $data['sku'] = $this->generateUniqueSku($product, $data);
 
         return ProductVariant::create($data)
-            ->load(['product:id,name,slug'])
-            ->loadCount(['images', 'stockMovements']);
+            ->load(['product:id,name,slug,base_price,status,category_id'])
+            ->loadCount(['stockMovements']);
     }
 
     public function update(Product $product, ProductVariant $variant, array $data): ProductVariant
     {
         $this->ensureBelongsToProduct($product, $variant);
 
+        if (array_key_exists('age_label', $data) && $data['age_label'] !== $variant->age_label) {
+            $data['sku'] = $this->generateUniqueSku($product, $data, $variant->id);
+        }
+
         $variant->update($data);
 
         return $variant->refresh()
-            ->load(['product:id,name,slug'])
-            ->loadCount(['images', 'stockMovements']);
+            ->load(['product:id,name,slug,base_price,status,category_id'])
+            ->loadCount(['stockMovements']);
     }
 
     public function delete(Product $product, ProductVariant $variant): void
@@ -104,45 +105,29 @@ class ProductVariantService
         }
     }
 
-    private function generateUniqueSku(Product $product, array $data): string
+    private function generateUniqueSku(Product $product, array $data, ?int $ignoreId = null): string
     {
-        // Generate base SKU from product name, color, size, and age
         $baseSku = $this->generateBaseSku($product, $data);
         
-        // Make it unique
-        return $this->makeUniqueSku($baseSku);
+        return $this->makeUniqueSku($baseSku, $ignoreId);
     }
 
     private function generateBaseSku(Product $product, array $data): string
     {
         $parts = [];
         
-        // Add product name part (first 3-5 characters)
         $productPart = $this->cleanString($product->name);
-        $parts[] = substr($productPart, 0, 5);
-        
-        // Add color part (first 3-4 characters)
-        if (!empty($data['color_name'])) {
-            $colorPart = $this->cleanString($data['color_name']);
-            $parts[] = substr($colorPart, 0, 4);
-        }
-        
-        // Add size part
-        if (!empty($data['size_name'])) {
-            $sizePart = $this->cleanString($data['size_name']);
-            $parts[] = substr($sizePart, 0, 3);
-        }
-        
-        // Add age part
+        $parts[] = $productPart !== '' ? substr($productPart, 0, 5) : 'p' . $product->id;
+
         if (!empty($data['age_label'])) {
             $agePart = $this->cleanString($data['age_label']);
-            $parts[] = substr($agePart, 0, 3);
+            $parts[] = $agePart !== ''
+                ? substr($agePart, 0, 8)
+                : 'a' . substr((string) abs(crc32($data['age_label'])), 0, 6);
         }
         
-        // Join parts with hyphens
         $sku = implode('-', $parts);
         
-        // Limit length to 20 characters
         if (strlen($sku) > 20) {
             $sku = substr($sku, 0, 17) . '...';
         }
@@ -150,12 +135,17 @@ class ProductVariantService
         return strtoupper($sku);
     }
 
-    private function makeUniqueSku(string $baseSku): string
+    private function makeUniqueSku(string $baseSku, ?int $ignoreId = null): string
     {
         $sku = $baseSku;
         $counter = 1;
 
-        while (ProductVariant::query()->where('sku', $sku)->exists()) {
+        while (
+            ProductVariant::query()
+                ->when($ignoreId, fn ($query) => $query->where('id', '!=', $ignoreId))
+                ->where('sku', $sku)
+                ->exists()
+        ) {
             $sku = $baseSku . '-' . $counter;
             $counter++;
         }

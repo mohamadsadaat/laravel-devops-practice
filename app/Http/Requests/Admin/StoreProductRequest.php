@@ -27,14 +27,14 @@ class StoreProductRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'category_id' => ['required', 'integer', 'exists:categories,id'],
+            'category_id' => ['required', 'integer', Rule::exists('categories', 'id')->where('is_active', true)],
             'name' => ['required', 'string', 'max:255'],
             // 'slug' => ['required', 'string', 'max:255', Rule::unique('products', 'slug')],
             'description' => ['nullable', 'string'],
             'status' => ['required', Rule::in(['draft', 'active', 'archived'])],
             'base_price' => ['nullable', 'numeric', 'min:0'],
             'brand' => ['nullable', 'string', 'max:255'],
-            // 'gender' => ['nullable', Rule::in(['Male', 'Female', 'unisex'])],
+            'gender' => ['nullable', Rule::in(['boy', 'girl', 'unisex'])],
             'is_featured' => ['nullable', 'boolean'],
         ];
     }

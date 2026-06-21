@@ -39,7 +39,7 @@ class OrderService
     {
         return $order->load([
             'items.product:id,name,slug',
-            'items.variant:id,product_id,sku,color_name,size_name,age_label',
+            'items.variant:id,product_id,age_label',
         ])->loadCount('items');
     }
 
