@@ -159,7 +159,7 @@ class ProductAgeVariantCheckoutTest extends TestCase
 
         $response->assertStatus(422)
             ->assertJsonFragment([
-                'message' => 'Insufficient stock for age 3-4 years.'
+               'message' => 'Insufficient stock for age 3-4 years. Requested: 5, Available: 2'
             ]);
 
         // Verify stock remains unchanged
@@ -212,7 +212,7 @@ class ProductAgeVariantCheckoutTest extends TestCase
         $secondResponse = $this->postJson('/api/checkout', $checkoutData);
         $secondResponse->assertStatus(422)
             ->assertJsonFragment([
-                'message' => 'Insufficient stock for age 2-3 years.'
+               'message' => 'Insufficient stock for age 2-3 years. Requested: 2, Available: 1'
             ]);
 
         // Verify final stock is 1 (3 - 2 = 1)
