@@ -157,7 +157,7 @@ class ProductAgeVariantCheckoutTest extends TestCase
             ],
         ]);
 
-        $response->assertStatus(500)
+        $response->assertStatus(422)
             ->assertJsonFragment([
                 'message' => 'Insufficient stock for age 3-4 years.'
             ]);
