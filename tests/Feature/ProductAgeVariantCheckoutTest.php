@@ -210,7 +210,7 @@ class ProductAgeVariantCheckoutTest extends TestCase
 
         // Second request should fail due to insufficient stock (only 1 left, requesting 2)
         $secondResponse = $this->postJson('/api/checkout', $checkoutData);
-        $secondResponse->assertStatus(500)
+        $secondResponse->assertStatus(422)
             ->assertJsonFragment([
                 'message' => 'Insufficient stock for age 2-3 years.'
             ]);
