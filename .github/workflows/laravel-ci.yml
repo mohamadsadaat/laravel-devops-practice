@@ -25,9 +25,10 @@ jobs:
         php-version: '8.2' # يمكنك تغييرها لتطابق إصدار مشروعك
 
     # 3. إنشاء ملف إعدادات البيئة
+    # 3. إنشاء ملف إعدادات البيئة
     - name: Copy .env
-      run: php -r "file_exists('.env') || copy('.env.example', '.env');"
-
+      run: cp .env.example .env
+      
     # 4. تثبيت الحزم ومكتبات المشروع
     - name: Install Dependencies
       run: composer install --no-interaction --prefer-dist --optimize-autoloader
